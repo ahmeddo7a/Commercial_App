@@ -1,0 +1,49 @@
+class CategoriesModel {
+  late final bool status;
+  late final DataModel data;
+
+  CategoriesModel({
+    required this.status,
+    required this.data,
+  });
+
+  CategoriesModel.fromJson(Map<String, dynamic> json)
+      : status = json['status'],
+        data = DataModel.fromJson(json['data']);
+
+}
+
+class DataModel {
+  late final int currentPage;
+  late final List<DataCat> data;
+
+
+  DataModel({
+    required this.currentPage,
+    required this.data,
+
+  });
+
+  DataModel.fromJson(Map<String, dynamic> json)
+      : currentPage = json['current_page'],
+        data = (json['data']).map((dynamic e) => DataCat.fromJson(e as Map<String,dynamic>)).toList();
+
+}
+
+class DataCat {
+  late final int id;
+  late final String name;
+  late final String image;
+
+  DataCat({
+    required this.id,
+    required this.name,
+    required this.image,
+  });
+
+  DataCat.fromJson(Map<String, dynamic> json)
+      : id = json['id'] ,
+        name = json['name'] ,
+        image = json['image'] ;
+
+}
